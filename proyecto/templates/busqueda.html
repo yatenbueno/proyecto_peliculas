@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load class_tag %}
+
+{% block content %}
+<link rel="stylesheet" href={% static "css/busqueda.css" %} />
+   <center>
+   <br>
+   <br>
+   <br>
+   {% if searched %}
+      {% if filtros %}
+         <h2 class="descripcion">Tu búsqueda fue "{{ searched }}"</h2>
+         <br/>
+         {% for filtro in filtros %}
+            <div class="columnas">
+               {% if filtro|get_class == 'Pelicula' %}
+               <div class="col1">
+                  <li><a href={% url 'vista-pelicula' filtro.id %}>{{ filtro|get_class }}: {{ filtro }}<br/></li>
+               </div>
+               {% elif filtro|get_class == 'Actor' %}
+               <div class="col2">
+                  <li><a href={% url 'vista-actor' filtro.id %}>{{ filtro|get_class }}: {{ filtro }}<br/></li>
+               </div>
+               {% else %}
+               <div class="col3">
+                  <li><a href={% url 'vista-director' filtro.id %}>{{ filtro|get_class }}: {{ filtro }}<br/></li>
+               </div>
+               {% endif %}
+            </div>
+         {% endfor %}
+      {% else %}
+         <h2>No hay resultados para la palabra "{{ searched }}"</h2>
+      {% endif %}
+   {% else %}
+      <h2>Tu búsqueda no contenía ningún valor</h2>
+   {% endif %}
+
+   </center>
+{% endblock %}

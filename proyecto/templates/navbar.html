@@ -1,0 +1,33 @@
+{% load static %}
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width", initial-scale=1>
+   <link rel="stylesheet" href={% static "css/navbar.css" %} />
+
+</head>
+<body>
+   <header class="header__navbar">
+      <a href={% url 'vista-home' %}>
+         <h2 class="logo_titulo">Movie Reviews</h2>
+      </a>
+      <nav class="barra__navegacion">
+         <ul class="nav__links">
+            <li><a href="vista-peliculas">Peliculas</a></li>
+            <li><a href="vista-actores">Actores</a></li>
+            <li><a href="vista-directores">Directores</a></li>
+         </ul>
+      </nav>
+      <div class="form_busqueda">
+         <form class="d-flex" method=POST action="{% url 'busqueda' %}">
+            {% csrf_token %}
+            <input id="buscar" class="form-control me-2"
+            type="search" placeholder="....."
+            aria-label="Buscar" name="searched">
+            <button class="btn btn-outline"
+            type="submit">Buscar</button>
+         </form>
+      </div>
+   </header>
+</body>

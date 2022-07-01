@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
+
+* {
+   box-sizing: border-box;
+   background-color: #24252A;
+}
+
+li, a, button {
+   font-family: "Montserrat", sans-serif;
+   font-weight: 500;
+   font-size: 16px;
+   color: #edf0f1;
+   text-decoration: none;
+   margin-block-end: auto;
+}
+
+.barra__navegacion{
+   background-color:#643f3f;
+   margin:auto;
+}
+.logo_titulo{
+   margin:auto;
+   background-color: #643f3f;
+}
+.logo{
+   width: 30%;
+   cursor: pointer;
+   margin: auto;
+   margin-bottom: 1.5%;
+}
+.form_busqueda{
+   background-color: #643f3f;
+}
+.form_busqueda button{
+   border: none;
+   cursor: pointer;
+   padding: 1px 10px;
+}
+.form_busqueda button:hover{
+   color:#0088a9;
+   background-color: #24252A;
+   border-color: #24252A;
+   transition: all 0.3s ease 0s;
+}
+.form_busqueda button:active{
+   color: #0088a9;
+}
+.header__navbar{
+   display: flex;
+   justify-content:right;
+   align-items: right;
+   padding: 10px 5%;
+   background-color:#643f3f;
+   position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   z-index: 2;
+}
+.header__navbar a:hover{
+   color:#0088a9;
+   transition: all 0.3s ease 0s;
+   text-decoration: line-through;;
+   text-decoration: none;
+}
+.nav__links {
+   list-style: none;
+   background-color:#643f3f;
+}
+
+.nav__links li {
+   display: inline-block;
+   padding: 9px 25px;
+   background-color: #24252A;
+   border: none;
+   border-radius: 50px;
+   cursor: pointer;
+   transition: all 0.3s ease 0s;
+}
+.nav__links li a{
+   transition: all 0.3s ease 0s;
+   background-color: #24252A;
+   text-decoration: none;
+}
+button {
+   padding: 9px 25px;
+   background-color: #24252A;
+   border: none;
+   border-radius: 50px;
+   cursor: pointer;
+   transition: all 0.3s ease 0s;
+}
+
+button:hover {
+   color: #0088a9
+}

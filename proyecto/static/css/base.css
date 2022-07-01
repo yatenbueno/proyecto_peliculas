@@ -1,0 +1,97 @@
+.title_header {
+   padding: .75rem 1.25rem;
+   background-color: #24252A;
+   border-bottom: 1px solid transparent;
+   padding: 5%;
+   padding-bottom: 5px;
+}
+.title_header a:hover{
+   color:#0088a9;
+   border-color: #24252A;
+   transition: all 0.3s ease 0s;
+   text-decoration: none;
+}
+.title_header h3 {
+   font-size: 0.80rem;
+   margin: 0;
+}
+.movies {
+   margin-bottom: .60rem; 
+   color:#ffffff;
+   margin-top: 2rem;
+}
+.movies h2{
+   color:#ffffff;
+}
+.img-card {
+   width: 85%;
+   height: 85%;
+   margin-bottom: .70rem;
+   margin: auto;
+}
+*{
+   margin-top: auto;
+}
+.btn{
+   display: inline-block;
+   color:#ffffff;
+   text-align: center;
+   padding: 5px 44px;
+   border-radius: 5px;
+   -webkit-border-radius: 5px;
+   -ms-border-radius: 5px;
+   -o-border-radius: 5px;
+}
+p{
+   margin-top: revert;
+}
+.card{
+   display: flex;
+   box-shadow: 0 0 15px rgba(182, 92, 92, 0.788); 
+   height: 25%;
+   width: 100%;
+   border: 1px solid #24252A;
+   margin: 5%;
+   background-color:#24252A;
+   flex-direction: column;
+   margin-top: auto;
+   text-align: center;
+}
+.footer {
+   padding: 1em 0; 
+   margin-top: auto; 
+   text-align: center;
+   font-size: 80%; 
+   outline: ridge #643f3f;
+   
+}
+.footer p {
+   margin: 0;
+}
+.footer-links {
+   padding-left: 0; 
+   margin-bottom: 1rem;
+}
+.footer-links li {
+   display: inline-block;
+}
+.footer a {
+   font-weight: 500; 
+   color: inherit;
+}
+.footer-links li + li {
+   margin-left: 1rem;
+}
+.container {
+   display: grid;
+   grid-template-columns: repeat(auto);
+   padding-top: 10rem;
+}
+body {
+   background-color:#24252A;
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+/* Bug Bootstrap V4.0.6 - Mobile - SCSS _navbar*/ 

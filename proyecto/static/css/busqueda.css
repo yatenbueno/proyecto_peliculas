@@ -1,0 +1,15 @@
+.descripcion{
+   color: white;
+   margin-top: -20px;
+}
+
+.col1{
+   text-align: justify;
+}
+
+.col2{
+   text-align: center;
+}
+.col3{
+   text-align: right;
+}

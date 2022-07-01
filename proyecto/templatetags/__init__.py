@@ -1,0 +1,1 @@
+from .class_tag import get_class

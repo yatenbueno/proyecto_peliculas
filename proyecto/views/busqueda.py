@@ -13,7 +13,7 @@ def BusquedaView(request):
       filtros_peliculas = Pelicula.objects.filter(nombre__contains=searched)
       filtros_actores = Actor.objects.filter(nombre__contains=searched)
       filtros_directores = Director.objects.filter(nombre__contains=searched)
-      filtro_universal = chain(filtros_peliculas, filtros_actores, filtros_directores)
+      filtro_universal = {'peliculas' : filtros_peliculas, 'actores' : filtros_actores, 'directores' : filtros_directores}
       return render(request, 'busqueda.html',
          {'searched':searched,
           'filtros':filtro_universal})

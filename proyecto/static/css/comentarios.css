@@ -1,0 +1,68 @@
+.card-comment{
+    color: black;
+    background-color: #f8f9fa;
+    border-radius: inherit;
+    width: 140%;
+}
+.img-actores{
+    width: 215px;
+    height: 300px;
+    margin-bottom: 4.7rem;
+}
+.card-actores{
+    margin-bottom: 3%;
+}
+
+.title-actores{
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+}
+.no_comments{
+    color: white;
+    text-align: center;
+}
+
+.card{
+    width: 65% !important;
+    align-self: center !important;
+    border: 1px solid #24252A !important;
+    height: auto !important;
+    color: white !important;
+    margin: 1% !important;
+    text-align: left !important;
+}
+.card-actor{
+    display: flex;
+    box-shadow: 0 0 15px rgb(135 130 130 / 79%);
+    margin: 3%;
+    background-color: #24252A;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 20px;
+    height: 300px;
+    width: 240px;
+}
+.agregar_comentario{
+    color: white;
+    text-align: center;
+}
+
+.agregar_comentario a:hover{
+    color:#0088a9;
+    border-color: #24252A;
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+ }
+
+ .img-card {
+    width: 85%;
+    /* height: 85%; */
+    height: 225px;
+    margin-bottom: 2rem;
+ }
+ .img-actores{
+    width: 180px;
+    height: 225px;
+    margin-bottom: 2.6999999999999993rem;
+ }

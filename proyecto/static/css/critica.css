@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200&display=swap');
+
+
+body {
+    display: grid;
+    align-items: start;
+}
+
+.comment-card{
+    margin-top: initial !important;
+}
+
+.card {
+    all: initial;
+    position: relative;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 20px;
+    width: 880px;
+    word-wrap: break-word;
+    background-color: #24252A;
+    background-clip: border-box;
+    border-radius: 10px;
+    -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+    margin-top: auto;
+}
+
+.comment-box{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: white;
+    padding:5px;
+    width: 119%;
+}
+
+
+.comment-area textarea{
+    resize: none; 
+    border: 1px solid #ad9f9f;
+    font-size: 15px;
+    color: black;
+}
+
+
+.form-control:focus {
+    color: black;
+    background-color: #fff;
+    border-color: #ffffff;
+    outline: 0;
+    box-shadow: white !important;
+}
+
+.rating {
+    display: flex;
+    margin-top: -20px;
+    flex-direction: row-reverse;
+    height: 10px;
+}
+
+.rating>input {
+    display: none
+}
+
+.rating>label {
+    position: relative;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4
+}

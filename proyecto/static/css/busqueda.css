@@ -1,15 +1,16 @@
 .descripcion{
    color: white;
-   margin-top: -20px;
+   /* margin-top: -15px; */
+   margin-top: revert;
 }
-
-.col1{
-   text-align: justify;
+.titulo-busqueda{
+   color: white;
 }
-
-.col2{
-   text-align: center;
+.grilla-busqueda{
+   margin-left: 15rem;
+   /* border: 10px solid red; */
+   min-height: 80vh;
 }
-.col3{
-   text-align: right;
+.no_value{
+   color:white;
 }

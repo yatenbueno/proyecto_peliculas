@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+    {% block content %}
+    <link rel="stylesheet" type="text/css" href={% static "css/pelicula.css" %} />
+    <link rel="stylesheet" type="text/css" href={% static "css/comentarios.css" %} />
+
+    </br>
+        <div id="container">	 
+            <div class="product-details">
+                <h1>{{director.nombre}} {{director.apellido}} ({{director.nacionalidad}})
+                    </br>
+                    <h4>Fecha de nacimiento: {{director.anio_nacimiento}}</h4>
+                </h1>
+                <p class="information">{{director.resumen_biografico}}</p>
+            </div> 
+            <div class="product-image">
+                <img src="/static/images/{{director.foto}}" alt="Movie" class="w-100" class="img-thumbnail" />
+            </div>
+        </div>
+
+        <div class="card-actores">
+            <div class="title-actores">
+               <h3>Peliculas</h3>
+            </div>
+            {% for pelicula in peliculas %}
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <article class="card-actor">
+                    <header class="title_header">
+                        <h3><a href="{% url 'vista-pelicula' pelicula.id%}">{{ pelicula.nombre }} {{ pelicula.apellido }}</a></h3>
+                    </header>
+                    <div class="card-block">
+                        <div class="img-card">
+                            <a href="{% url 'vista-pelicula' pelicula.id%}"><img class="img-card" src="/static/images/{{pelicula.foto}}" alt="Movie" /></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            {% endfor %}
+        </div>
+    {% endblock %}

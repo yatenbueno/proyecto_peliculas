@@ -1,0 +1,70 @@
+<!-- Template de tabla de peliculas -->
+{% extends 'base.html' %}
+
+{% load static %}
+    {% block content %}
+    <main class="container">
+        <section class="movies" id="movies">
+            {% for p in peliculas %}
+            <div class="grid">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <!-- Carta de una pelicula -->
+                    <article class="card">
+                        <header class="title_header">
+                            <h3><a href="{% url 'vista-pelicula' p.id%}">{{p.nombre}}</a></h3>
+                        </header>
+                        <div class="card-block">
+                            <div class="img-card">
+                                <a href="{% url 'vista-pelicula' p.id%}"><img src="/static/images/{{p.foto}}" alt="Movie" class="img" class="img-thumbnail" /></a>
+                                <p>Puntaje: {{p.puntaje}}</p> 
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+
+        <!-- PAGINATION -->
+        <div class="row mt-3 justify-content-center">
+            <div class="mt-2">
+                <nav>
+                    <ul class="pagination">
+    
+                        <!-- Estoy en una página del medio por lo cual puedo ir para atra -->
+                        {% if peliculas.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page=1">Primera</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ peliculas.previous_page_number }}">&laquo;</a>
+                            </li>
+                        {% else %}
+
+                        <!-- Si estoy en la primera página entonces deshabilito el botón 1 ya que no hay página previa -->
+                        <li class="page-item disabled">
+                            <a class="page-link" href="?page=1">Primera</a>
+                        </li>
+                        {% endif %}
+
+                        <!-- Si hay página siguiente entonces habilito el botón de la página siguiente y el de la última -->
+                        {% if peliculas.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ peliculas.next_page_number }}">&raquo;</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ peliculas.paginator.num_pages }}">Última</a>
+                            </li>
+                            {% else %}
+
+                        <!-- No hay página siguiente por lo cual estoy en la última, entonces deshabilito el botón de la última página -->
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">Última</a>
+                            </li>  
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </main>
+    {% endblock %}

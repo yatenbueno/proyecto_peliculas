@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}
+    {% block content %}
+    <link rel="stylesheet" type="text/css" href={% static "css/personas_card.css" %} />
+
+
+    <main class="container">
+        <section class="movies" id="movies">
+        {% for d in directores %}
+        <div class="grid">
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <article class="card">
+                    <header class="title_header">
+                    <h3><a href="{% url 'vista-director' d.id%}">{{d.nombre}} {{d.apellido}}</a></h3>
+                    </header>
+                    <div class="card-block">
+                        <div class="img-card">
+                            <a href="{% url 'vista-director' d.id%}"><img class="img-actores" src="/static/images/{{d.foto}}" alt="Movie" /></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+        {% endfor %}
+        </section>
+        <div class="row mt-3 justify-content-center">
+            <div class="mt-2">
+                <nav>
+                    <ul class="pagination">
+                        {% if directores.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page=1">Primera</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ directores.previous_page_number }}">&laquo;</a>
+                            </li>
+                        {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="?page=1">Primera</a>
+                        </li>
+                        {% endif %}
+
+                        {% if directores.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ directores.next_page_number }}">&raquo;</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ directores.paginator.num_pages }}">Última</a>
+                            </li>
+                            {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">Última</a>
+                            </li>  
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        </main>
+    {% endblock %}

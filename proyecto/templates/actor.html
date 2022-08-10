@@ -1,46 +1,41 @@
-<!DOCTYPE html>
-{% load static %}
-<html>
-   <head>
-      <title>Actor</title>
-   </head>
-   <body>
-      <section class="h-100 gradient-custom-2">
-         <div class="container py-5 h-100">
-           <div class="row d-flex justify-content-center align-items-center h-100">
-             <div class="col col-lg-9 col-xl-7">
-               <div class="card">
-                 <div class="rounded-top text-white d-flex flex-row" style="background-color: #000; height:200px;">
-                   <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                     <img src="/static/images/{{actor.foto}}"
-                       alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                       style="width: 150px; z-index: 1">
-                   </div>
-                   <div class="ms-3" style="margin-top: 60px;">
-                     <h1>{{actor.nombre}} {{actor.apellido}}</h1>
-                     <p> {{actor.resumen_biografico}}</p>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
-       </section>
-       
-       <div id="main_container">
-         <table>
-            <thead>
-               <tr>
-                  <th>Peliculas</th>
-               </tr>
-            </thead>
+{% extends 'base.html' %}
 
-            <tr>
-               <td>
-                  {{actor.pelicula.nombre}}
-               </td>
-            </tr>
-         </table>
-       </div>
-   </body>
-</html>
+{% load static %}
+    {% block content %}
+    <link rel="stylesheet" type="text/css" href={% static "css/pelicula.css" %} />
+    <link rel="stylesheet" type="text/css" href={% static "css/comentarios.css" %} />
+
+    </br>
+        <div id="container">	 
+            <div class="product-details">
+                <h1>{{actor.nombre}} {{actor.apellido}} ({{actor.nacionalidad}})
+                    </br>
+                    <h4>Fecha de nacimiento: {{actor.anio_nacimiento}}</h4>
+                </h1>
+                <p class="information">{{actor.resumen_biografico}}</p>
+            </div> 
+            <div class="product-image">
+                <img src="/static/images/{{actor.foto}}" alt="Movie" class="w-100" class="img-thumbnail" />
+            </div>
+        </div>
+
+        <div class="card-actores">
+            <div class="title-actores">
+               <h3>Peliculas</h3>
+            </div>
+            {% for pelicula in peliculas %}
+               <div class="col-lg-2 col-md-4 col-sm-6">
+                  <article class="card-actor">
+                     <header class="title_header">
+                           <h3><a href="{% url 'vista-pelicula' pelicula.id%}">{{ pelicula.nombre }} {{ pelicula.apellido }}</a></h3>
+                     </header>
+                        <div class="card-block">
+                           <div class="img-card">
+                              <a href="{% url 'vista-pelicula' pelicula.id%}"><img class="img-card" src="/static/images/{{pelicula.foto}}" alt="Movie" /></a>
+                           </div>
+                        </div>
+                  </article>
+               </div>
+            {% endfor %}
+        </div>
+    {% endblock %}

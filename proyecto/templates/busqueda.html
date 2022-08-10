@@ -8,32 +8,61 @@
    <br>
    <br>
    <br>
+   <br>
+   <br>
    {% if searched %}
       {% if filtros %}
          <h2 class="descripcion">Tu búsqueda fue "{{ searched }}"</h2>
          <br/>
-         {% for filtro in filtros %}
-            <div class="columnas">
-               {% if filtro|get_class == 'Pelicula' %}
-               <div class="col1">
-                  <li><a href={% url 'vista-pelicula' filtro.id %}>{{ filtro|get_class }}: {{ filtro }}<br/></li>
+         <div class="mx-auto" style="width: 120%">
+            <div class="grilla-busqueda">
+               <div class="col-lg-3 col-md-4 col-sm-6">
+
+                  <!-- PELICULAS -->
+
+                  <div class="list-group">
+                     {% if filtros.peliculas %}
+                        <h3 class="titulo-busqueda">Peliculas</h3>
+                        {% for filtro in filtros.peliculas %}
+                           <a href={% url 'vista-pelicula' filtro.id %} class="list-group-item list-group-item-action">{{ filtro|get_class }}: {{ filtro }}</a>
+                        {% endfor %}
+                     {% endif %}
+                  </div>
                </div>
-               {% elif filtro|get_class == 'Actor' %}
-               <div class="col2">
-                  <li><a href={% url 'vista-actor' filtro.id %}>{{ filtro|get_class }}: {{ filtro }}<br/></li>
+                     <!-- ACTORES -->
+                     
+               <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="list-group">
+                     {% if filtros.actores %}
+                        <h3 class="titulo-busqueda">Actores</h3>
+                        {% for filtro in filtros.actores %}
+                           <a href={% url 'vista-actor' filtro.id %} class="list-group-item list-group-item-action">{{ filtro|get_class }}: {{ filtro }}</a>
+                        {% endfor %}
+                     {% endif %}
+                  </div>   
                </div>
-               {% else %}
-               <div class="col3">
-                  <li><a href={% url 'vista-director' filtro.id %}>{{ filtro|get_class }}: {{ filtro }}<br/></li>
+                           <!-- DIRECTORES -->
+                           
+               <div class="col-lg-3 col-md-4 col-sm-6">
+                  <div class="list-group">
+                     {% if filtros.directores %}
+                        <h3 class="titulo-busqueda">Directores</h3>
+                        {% for filtro in filtros.directores %}
+                           <a href={% url 'vista-director' filtro.id %} class="list-group-item list-group-item-action">{{ filtro|get_class }}: {{ filtro }}</a>
+                        {% endfor %}
+                     {% endif %}
+                  </div>
                </div>
-               {% endif %}
             </div>
-         {% endfor %}
+         </div>
+
+         <!-- ELSE -->
+
       {% else %}
-         <h2>No hay resultados para la palabra "{{ searched }}"</h2>
+         <h2 style=color:white>No hay resultados para la palabra "{{ searched }}"</h2>
       {% endif %}
    {% else %}
-      <h2>Tu búsqueda no contenía ningún valor</h2>
+      <h2 class="no_value">Tu búsqueda no contenía ningún valor</h2>
    {% endif %}
 
    </center>

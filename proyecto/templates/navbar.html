@@ -14,18 +14,18 @@
       </a>
       <nav class="barra__navegacion">
          <ul class="nav__links">
-            <li><a href="vista-peliculas">Peliculas</a></li>
-            <li><a href="vista-actores">Actores</a></li>
-            <li><a href="vista-directores">Directores</a></li>
+            <li><a href="{% url 'vista-peliculas' %}">Peliculas</a></li>
+            <li><a href="{% url 'vista-actores' %}">Actores</a></li>
+            <li><a href="{% url 'vista-directores' %}">Directores</a></li>
          </ul>
       </nav>
       <div class="form_busqueda">
-         <form class="d-flex" method=POST action="{% url 'busqueda' %}">
+         <form class="d-flex" method=POST action="{% url 'vista-busqueda' %}">
             {% csrf_token %}
             <input id="buscar" class="form-control me-2"
-            type="search" placeholder="....."
+            type="search" placeholder=". . . . ."
             aria-label="Buscar" name="searched">
-            <button class="btn btn-outline"
+            <button class="btn btn-dark"
             type="submit">Buscar</button>
          </form>
       </div>

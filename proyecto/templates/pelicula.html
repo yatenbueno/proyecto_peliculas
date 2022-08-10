@@ -1,7 +1,107 @@
-<html>
-   <head>
-      <title>Pelicula</title>
-   </head>
-   <body>
-   </body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+   {% block content %}
+   <link rel="stylesheet" type="text/css" href={% static "css/pelicula.css" %} />
+   <link rel="stylesheet" type="text/css" href={% static "css/comentarios.css" %} />
+
+   </br>
+      <div id="container">	
+         
+         <div class="product-details">
+               
+            <h1>{{pelicula.nombre}}</h1>
+            <p>Puntaje: {{pelicula.puntaje}}</p> 
+            <p class="information">{{pelicula.resumen}}</p>
+         </div>
+         
+         <div class="product-image">
+            <img src="/static/images/{{pelicula.foto}}" alt="Movie" class="w-100" class="img-thumbnail" />
+         </div>
+         
+      </div>
+      <!--Carta de actores-->
+      <div class="card-actores">
+         <div class="title-actores">
+            <h3>Actores</h3>
+         </div>
+         {% for a in actores %}
+            <div class="grid">
+                  <div class="col-lg-2 col-md-4 col-sm-6">
+                     <article class="card-actor">
+                        <header class="title_header">
+                              <h3><a href="{% url 'vista-actor' a.id%}">{{a.nombre}} {{a.apellido}}</a></h3>
+                        </header>
+                        <div class="card-block">
+                              <div class="img-card">
+                                 <a href="{% url 'vista-actor' a.id%}"><img class="img-actores" src="/static/images/{{a.foto}}" alt="Movie" /></a>
+                              </div>
+                        </div>
+                     </article>
+                  </div>
+            </div>
+         {% endfor %}
+      </div>
+      <!--Carta de directores-->
+      <div class="card-actores">
+         <div class="title-actores">
+            <h3>Director</h3>
+         </div>
+         {% for director in director %}
+            <div class="col-lg-2 col-md-4 col-sm-6">
+               <article class="card-actor">
+                  <header class="title_header">
+                        <h3><a href="{% url 'vista-director' director.id%}">{{ director.nombre }} {{ director.apellido }}</a></h3>
+                  </header>
+                     <div class="card-block">
+                        <div class="img-card">
+                           <a href="{% url 'vista-director' director.id%}"><img class="img-card" src="/static/images/{{director.foto}}" alt="Movie" /></a>
+                        </div>
+                     </div>
+               </article>
+            </div>
+         {% endfor %}
+      </div>
+      <!-------Comentar-------->
+      <div class="card">
+         <div class="card-body">
+            <!-- Si una pelicula no tiene criticas todavía, aviso al usuario y habilito agregar uno -->
+            {% if not pelicula.reseñas.all %}
+                  <div class="no_comments">
+                     <h2>No hay comentarios...</h2>
+                  </div>
+               <div class="agregar_comentario">
+                  <a class="btn btn-dark" href={% url 'vista-critica' pelicula.id %}>Agregar uno</a>
+               </div>
+            {% else %}
+            <!-- Si una pelicula tiene criticas habilito botón para comentar y muestro las críticas que se han hecho -->
+               <div class="agregar_comentario">
+                  <a class="btn btn-dark" href={% url 'vista-critica' pelicula.id %}>Agregar comentario</a>
+               </div>
+               <!-- Muestro las críticas que se han hecho -->
+               {% for reseñas in pelicula.reseñas.all %}
+                  <div class="card">
+                     <div class="card-comment">
+                     <div class="card-body">
+                        <strong>
+                           {{ reseñas.nombre_usuario }}:
+                           <!-- Si el puntaje es 1 imprimo la palabra en singular, si es más imprimo en plural -->
+                           {% if reseñas.puntaje == 1 %}
+                              {{ reseñas.puntaje }} punto
+                           {% else %}
+                              {{ reseñas.puntaje }} puntos
+                           {% endif %}
+                           <br/>
+                        </strong>
+                        <!-- Si la critica está aprobada en que no es ofensiva entonces muestro el comentario -->
+                           {% if reseñas.estado_resenia %}
+                              {{ reseñas.comentario }}
+                           {% endif %}
+                        </div>
+                     </div>
+                  </div>
+               {% endfor %}
+            {% endif %}
+         </div>
+      </div>
+   {% endblock %}

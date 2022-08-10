@@ -1,4 +1,5 @@
 from ast import For
+from django.urls import reverse
 from django.db import models
 from proyecto_peliculas import settings
 from django.contrib import admin
@@ -30,8 +31,8 @@ class Pelicula(models.Model):
    nombre = models.CharField(max_length=60, null=False)
    resumen = models.CharField(max_length=500, null=False)
    anio_realizacion = models.IntegerField(verbose_name='año realizacion')
-   actores = models.ManyToManyField(Actor)
-   director = models.ForeignKey(Director, on_delete=models.CASCADE)
+   actores = models.ManyToManyField(Actor, related_name="pelicula")
+   director = models.ForeignKey(Director, related_name="pelicula", on_delete=models.CASCADE)
    puntaje = models.IntegerField(blank=True, null=True)
    foto = models.ImageField(blank=True, upload_to='peliculas/',verbose_name="foto")
 
@@ -39,25 +40,32 @@ class Pelicula(models.Model):
        return self.nombre
 
    def calcularPuntaje(self):
-      resenias = self.nombre.resenia_set.all()
+      resenias = self.reseñas.all()
       cantidad = 0
+      puntaje = 0
       for resenia in resenias:
-         cantidad =+ 1
-         puntaje = resenia.__str__()
+         cantidad += 1
+         puntaje += resenia.puntaje
       self.puntaje = puntaje/cantidad if cantidad > 0 else 0
       self.save()
 
 class Resenia(models.Model):
-   comentario = models.CharField(max_length=300)
-   puntaje = models.IntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)])
-   pelicula = models.ForeignKey(Pelicula, on_delete=models.CASCADE)
+   comentario = models.CharField(max_length=300, verbose_name="comentario")
+   puntaje = models.IntegerField(default=1, validators=[MinValueValidator(1), MaxValueValidator(5)], verbose_name="puntaje")
+   pelicula = models.ForeignKey(Pelicula, related_name="reseñas", on_delete=models.CASCADE, verbose_name="pelicula")
+   email_usuario = models.EmailField(default="random@email.com", max_length=255, verbose_name="email")
+   nombre_usuario = models.CharField(default="Anonimo", max_length=150, verbose_name="nombre")
+   estado_resenia = models.BooleanField(default=False, verbose_name="estado")
+   
 
    def __str__(self):
-       return self.puntaje
+       return self.pelicula.nombre + ' - Puntaje: ' + str(self.puntaje)
+
+   def get_absolute_url(self):
+      return reverse('vista-pelicula', args=(str(self.pelicula.id)))
 
    def save(self) :
       a= super().save()
       self.pelicula.calcularPuntaje()
       return a
-
    

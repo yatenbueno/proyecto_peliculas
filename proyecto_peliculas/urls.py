@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from proyecto.views import ActorView, BaseView, PeliculaView, BusquedaView, HomeView
+from proyecto.views import ActorView, DirectorView, BaseView, PeliculaView, ComentarioView, AgregarCriticaView, PeliculasView, BusquedaView, HomeView, PaginatePeliculaView, PaginateActoresView, PaginateDirectoresView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -23,7 +23,11 @@ urlpatterns = [
     path('', HomeView.as_view(),name='vista-home'),
     path('admin/', admin.site.urls),
     path('actor/<int:id_actor>', ActorView.as_view(),name='vista-actor'),
-    path('director/<int:id_director>', ActorView.as_view(),name='vista-director'),
+    path('director/<int:id_director>', DirectorView.as_view(),name='vista-director'),
     path('pelicula/<int:id_pelicula>', PeliculaView.as_view(), name='vista-pelicula'),
-    path('busqueda/', BusquedaView,name='busqueda'),
+    path('peliculas/', PaginatePeliculaView,name='vista-peliculas'),
+    path('actores/', PaginateActoresView,name='vista-actores'),
+    path('directores/', PaginateDirectoresView,name='vista-directores'),
+    path('busqueda/', BusquedaView,name='vista-busqueda'),
+    path('pelicula/<int:id_pelicula>/critica/', AgregarCriticaView.as_view(),name='vista-critica'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

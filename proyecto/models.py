@@ -68,4 +68,5 @@ class Resenia(models.Model):
       a= super().save()
       self.pelicula.calcularPuntaje()
       return a
+
    

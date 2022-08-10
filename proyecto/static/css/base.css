@@ -4,6 +4,7 @@
    border-bottom: 1px solid transparent;
    padding: 5%;
    padding-bottom: 5px;
+   border-radius: 20px;
 }
 .title_header a:hover{
    color:#0088a9;
@@ -18,7 +19,7 @@
 .movies {
    margin-bottom: .60rem; 
    color:#ffffff;
-   margin-top: 2rem;
+   margin-top: 5rem;
 }
 .movies h2{
    color:#ffffff;
@@ -28,6 +29,12 @@
    height: 85%;
    margin-bottom: .70rem;
    margin: auto;
+}
+
+.img{
+   width: 215px;
+   height: 300px;
+   /* margin-bottom: 4.7rem; */
 }
 *{
    margin-top: auto;
@@ -47,33 +54,41 @@ p{
 }
 .card{
    display: flex;
-   box-shadow: 0 0 15px rgba(182, 92, 92, 0.788); 
-   height: 25%;
-   width: 100%;
+   box-shadow: 0 0 15px rgb(135 130 130 / 79%); 
+   height: 423px;
+   width: 102%;
    border: 1px solid #24252A;
    margin: 5%;
    background-color:#24252A;
    flex-direction: column;
    margin-top: auto;
    text-align: center;
+   border-radius: 20px;
+   font-family: "Montserrat", sans-serif;
 }
 .footer {
    padding: 1em 0; 
    margin-top: auto; 
    text-align: center;
    font-size: 80%; 
-   outline: ridge #643f3f;
-   
+   outline: 1px ridge rgb(135 130 130 / 79%);
+   background: #24252A;
+   z-index: 2;
+   /* border: 10px solid blue; */
+   text-align: left;
 }
 .footer p {
    margin: 0;
+   color: grey;
+   margin-left: 45px
 }
 .footer-links {
-   padding-left: 0; 
+   /* padding-left: 0;  */
    margin-bottom: 1rem;
 }
 .footer-links li {
    display: inline-block;
+   padding: 0px 10px;
 }
 .footer a {
    font-weight: 500; 
@@ -85,13 +100,19 @@ p{
 .container {
    display: grid;
    grid-template-columns: repeat(auto);
-   padding-top: 10rem;
+   padding-top: 5rem;
+   margin-bottom: 50px;
+   /* border: 10px solid red; */
+   min-height: 100vh;
 }
 body {
    background-color:#24252A;
+   background-image: linear-gradient( to right, #644b4b, #3e3a3a);
    display: flex;
    flex-direction: column;
    min-height: 100vh;
+   font-size: 14px !important;
 }
 
 /* Bug Bootstrap V4.0.6 - Mobile - SCSS _navbar*/ 
+

@@ -2,7 +2,6 @@
 
 * {
    box-sizing: border-box;
-   background-color: #24252A;
 }
 
 li, a, button {
@@ -15,12 +14,15 @@ li, a, button {
 }
 
 .barra__navegacion{
-   background-color:#643f3f;
+   background-color:#24252A;
    margin:auto;
 }
 .logo_titulo{
    margin:auto;
-   background-color: #643f3f;
+   background-color: #24252A;
+}
+.header__navbar a{
+   color: white !important;
 }
 .logo{
    width: 30%;
@@ -28,18 +30,23 @@ li, a, button {
    margin: auto;
    margin-bottom: 1.5%;
 }
+
+.form-control{
+   font-size: 14px !important;
+   color: black !important;
+}
 .form_busqueda{
-   background-color: #643f3f;
+   background-color: #24252A;
 }
 .form_busqueda button{
-   border: none;
+   border: 1px solid white;
    cursor: pointer;
    padding: 1px 10px;
 }
 .form_busqueda button:hover{
-   color:#0088a9;
+   color:#0088a9 !important;
    background-color: #24252A;
-   border-color: #24252A;
+   border-color: white;
    transition: all 0.3s ease 0s;
 }
 .form_busqueda button:active{
@@ -50,29 +57,30 @@ li, a, button {
    justify-content:right;
    align-items: right;
    padding: 10px 5%;
-   background-color:#643f3f;
+   background-color:#24252A;
    position: fixed;
    left: 0;
    top: 0;
    width: 100%;
    z-index: 2;
+   outline: 1px solid rgb(135 130 130 / 79%);
 }
 .header__navbar a:hover{
-   color:#0088a9;
+   color:#0088a9 !important;
    transition: all 0.3s ease 0s;
    text-decoration: line-through;;
    text-decoration: none;
 }
 .nav__links {
    list-style: none;
-   background-color:#643f3f;
+   background-color:#24252A;
 }
 
 .nav__links li {
    display: inline-block;
    padding: 9px 25px;
    background-color: #24252A;
-   border: none;
+   border: 1px solid white;
    border-radius: 50px;
    cursor: pointer;
    transition: all 0.3s ease 0s;
@@ -82,7 +90,7 @@ li, a, button {
    background-color: #24252A;
    text-decoration: none;
 }
-button {
+/* button {
    padding: 9px 25px;
    background-color: #24252A;
    border: none;
@@ -93,4 +101,4 @@ button {
 
 button:hover {
    color: #0088a9
-}
+}  */
